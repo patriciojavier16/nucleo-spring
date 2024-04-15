@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Computadoras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Formulario de computadoras</h1>
+<form th:object="${computadora}" th:action="${accion}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div>
+    <label>Marca Computador:<input type="text" th:field="*{marcaComputador}" /></label><br>
+    <span th:if="${#fields.hasErrors('marcaComputador')}" th:errors="*{marcaComputador}">Error de marca</span>
+    </div>
+    <label>Modelo Computador:<input type="text" th:field="*{modeloComputador}" /></label><br>
+    <label>Marca Procesador:<input type="text" th:field="*{marcaProcesador}" /></label><br>
+    <label>Velocidad Procesador:<input type="text" th:field="*{velocidadProcesador}" /></label><br>
+    <label>Generacion Procesador:<input type="text" th:field="*{generacionProcesador}" /></label><br>
+    <label>Tipo RAM:<input type="text" th:field="*{tipoRam}" /></label><br>
+    <label>Capacidad RAM:<input type="text" th:field="*{capacidadRam}" /></label><br>
+    <label>Tipo Disco:<input type="text" th:field="*{tipoDisco}" /></label><br>
+    <label>Capacidad Disco:<input type="text" th:field="*{capacidadDisco}" /></label><br>
+    <label>Marca Grafica:<input type="text" th:field="*{marcaGrafica}" /></label><br>
+    <label>Capacidad Grafica:<input type="text" th:field="*{capacidadGrafica}" /></label><br>
+
+    <button type="submit">Guardar</button>
+</form>
+<a href="/computadoras">Volver al listado de computadoras</a>
+</body>
+</html>
